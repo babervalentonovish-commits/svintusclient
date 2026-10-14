@@ -1,0 +1,19 @@
+{
+    "targets": {
+        "swap": {}
+    },
+    "passes": [
+        {
+            "vertex_shader": "minecraft:post/blit",
+            "fragment_shader": "svintusclient:post/blur_downsample",
+            "inputs": [{ "sampler_name": "InSampler", "target": "minecraft:main" }],
+            "output": "swap"
+        },
+        {
+            "vertex_shader": "minecraft:post/blit",
+            "fragment_shader": "svintusclient:post/blur_upsample",
+            "inputs": [{ "sampler_name": "InSampler", "target": "swap" }],
+            "output": "minecraft:main"
+        }
+    ]
+}
